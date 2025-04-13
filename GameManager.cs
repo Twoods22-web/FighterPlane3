@@ -44,6 +44,8 @@ public class GameManager : MonoBehaviour
         Instantiate(playerPrefab, transform.position, Quaternion.identity);
         CreateSky();
         InvokeRepeating("CreateEnemy", 1, 3);
+        InvokeRepeating("CreateEnemyTwo", 3, 4); // This will call CreateEnemyTwo every 4 seconds starting after 1 second
+        InvokeRepeating("CreateEnemyThree", 5, 6); // Calls CreateEnemyThree every 5 seconds after 6 seconds
         StartCoroutine(SpawnPowerup());
         powerupText.text = "No powerups yet!";
     }
@@ -61,8 +63,19 @@ public class GameManager : MonoBehaviour
     {
         Instantiate(enemyOnePrefab, new Vector3(Random.Range(-horizontalScreenSize, horizontalScreenSize) * 0.9f, verticalScreenSize, 0), Quaternion.Euler(180, 0, 0));
     }
+    void CreateEnemyTwo()
+    {
+        // This function can be used to create another type of enemy
+        Instantiate(enemyTwoPrefab, new Vector3(9f, Random.Range(-6.5f, 6.5f), 0), Quaternion.identity);
+        // You can implement this function as needed for your game
+    }
+    void CreateEnemyThree()
+    {
+        Instantiate(enemyThreePrefab, new Vector3(Random.Range(-9f, 9f), 6.5f, 0), Quaternion.identity);
+    }
+}
 
-    void CreatePowerup()
+void CreatePowerup()
     {
         Instantiate(powerupPrefab, new Vector3(Random.Range(-horizontalScreenSize * 0.8f, horizontalScreenSize * 0.8f), Random.Range(-verticalScreenSize * 0.8f, verticalScreenSize * 0.8f), 0), Quaternion.identity);
     }
