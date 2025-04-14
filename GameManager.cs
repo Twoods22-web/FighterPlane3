@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     public GameObject restartText;
     public GameObject powerupPrefab;
     public GameObject audioPlayer;
+    public GameObject healthPrefab;
 
     public AudioClip powerupSound;
     public AudioClip powerdownSound;
@@ -135,6 +136,10 @@ void CreatePowerup()
     void CreatCoin()
     {
         Instantiate(CoinPrefab, new Vector3(Randon.Range(1f, 5.5f), Random.Range(1f, 9f), Quaternion.identity);
+    }
+     void CreateHealth()
+    {
+        Instantiate(healthPrefab, new Vector3(Random.Range(1f, 5.5f), Random.Range(1f, 9f), Quaternion.identity));
     }
 
     //a function to print the score. Run this after collecting a coin
